@@ -1,0 +1,10 @@
+[Unit]
+Description=Bootalert
+After=postfix.service
+
+[Service]
+ExecStart=/usr/local/bin/bootalert.py
+
+[Install]
+WantedBy=multi-user.target
+
