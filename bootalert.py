@@ -15,38 +15,30 @@ import re
 import smtplib
 import socket
 import sys
-import urllib
+import urllib2
 
 # Get Hostname
 hostname = socket.gethostname()
 
 # Get current IP
 try:
-    ipsite = urllib.urlopen('http://checkip.dyndns.org')
-except:
-    print 'Connection error getting IP address.'
-    sys.exit(1)
-
-response = ipsite.read()
-ips = re.findall("(?:\d{1,3}\.){3}\d{1,3}", response)
-if type(ips) in [list,  tuple,  set]:
-    for record in ips:
-        newip = record
+    ipsite = urllib2.urlopen('http://checkip.dyndns.org')
+    response = ipsite.read()
+    ips = re.findall("(?:\d{1,3}\.){3}\d{1,3}", response)
+    if type(ips) in [list,  tuple,  set]:
+        for record in ips:
+            newip = record
+except IOError as e:
+    print('Connection error getting IP address: %s' % e.reason)
+    newip = 'Fetching IP address failed with: ' + e.reason[1]
 
 try:
     newip
 except NameError:
-    print 'Unable to find IP address in response from check site.'
-    sys.exit(1)
+    print('Unable to find IP address in response from check site.')
+    newip = 'Fetching IP address failed - no IP found in response from dyndns.org'
 
-# Verify it's a good ip
-try:
-    socket.inet_aton(newip)
-except socket.error:
-    print 'Received invalid IP address.'
-    sys.exit(1)
-
-print 'Current IP: %s' % newip
+print('Current IP: %s' % newip)
 
 # Parse Config File
 config = ConfigParser.ConfigParser()
