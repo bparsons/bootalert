@@ -5,7 +5,7 @@
 # Brian Parsons <brian@pmex.com>
 #
 
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgname='bootalert'
 pkgdesc='Sends email on system boot'
@@ -17,7 +17,7 @@ source=('bootalert'
         'bootalert.py'
         'bootalert.service')
 md5sums=('eaac18cb46a9baf0117bd3d0cc1cc1c3'
-         'd0a3f1917fb727732955ff66d67deced'
+         'a89f60c2a5ffde0872b9181f3ff8bbcf'
          'b56fc4cd1fa06420afad807ab1ec7eaa')
 
 package() {
