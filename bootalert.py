@@ -22,7 +22,7 @@ hostname = socket.gethostname()
 
 # Get current IP
 try:
-    ipsite = urllib2.urlopen('http://checkip.dyndns.org')
+    ipsite = urllib2.urlopen('http://ip.brian.is')
     response = ipsite.read()
     ips = re.findall("(?:\d{1,3}\.){3}\d{1,3}", response)
     if type(ips) in [list,  tuple,  set]:
@@ -35,8 +35,8 @@ except IOError as e:
 try:
     newip
 except NameError:
-    print('Unable to find IP address in response from check site.')
-    newip = 'Fetching IP address failed - no IP found in response from dyndns.org'
+    print('Unable to find IP address in response from ip.brian.is.')
+    newip = 'Fetching IP address failed - no IP found in response from ip.brian.is'
 
 print('Current IP: %s' % newip)
 
@@ -78,5 +78,3 @@ try:
 except:
     print("Error: unable to send boot alert email. Mail server running?")
     sys.exit(1)
-
-
