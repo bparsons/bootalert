@@ -22,3 +22,5 @@ If no configuration file is found it will send the message to root from root.
 ## License
 
 This script is distributed under the MIT License (see LICENSE)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-24846718-5/bootalert/README.md)](https://github.com/igrigorik/ga-beacon)
